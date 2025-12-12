@@ -22,9 +22,30 @@ To begin, each cloud service in this system will be described in terms of its sp
 
 ## Architecture & Implementation Plan 
 
+
+To begin, each cloud service in this system will be described in terms of its specific role, highlighting how it relates to concepts covered in prior coursework. The accompanying visual diagram provides a clear mapping of these services and their interactions. Below is a service mapping of the plan, which gives a clear visualization of the layer, which service cloud could be used, the solution, and which module we learned in class.
+
 ## Service Mapping: 
 
 <img width="468" height="519" alt="image" src="https://github.com/user-attachments/assets/6ac95fcd-8761-4254-86af-e82f3e987e7d" />
+
+## Data Flow Narrative
+
+The end-to-end flow of this data is securely moved, processed, and utilized for real-time prediction of chosen services from GCP, Azure, and OCI:
+
+* **Step 1**: 
+        Data Ingestion (GCP): The EHR system sends patient flow data (JSON/CSV) securely to Cloud Storage (GCP).
+* **Step 2**: 
+        ETL Trigger (Azure): The arrival of the new file in GCP Storage triggers the Azure Functions service.
+* **Step 3**: 
+        Transformation & Security (Azure): Azure Functions performs ETL, validating data and completing the mandatory hashing and de-identification of PHI.
+* **Step 4**:
+        Database Load (OCI): The Azure Function writes the cleaned, de-identified data into the Autonomous Database (OCI).
+* **Step 5**:
+        AI Calculation (Azure): Azure ML queries OCI, executes the ML model to calculate the predicted wait time, and writes the results back to the OCI Database.
+* **Step 6**:
+        Presentation: Frontend applications (Patient App/Staff Dashboard) query the OCI Database via the Access Layer to display real-time predictions and metrics.
+
 
 
 
