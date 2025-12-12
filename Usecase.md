@@ -20,6 +20,11 @@ To begin, each cloud service in this system will be described in terms of its sp
 
 <img width="426" height="212" alt="image" src="https://github.com/user-attachments/assets/1e2c2eb6-986f-4d28-a780-f2bf57158a82" />
 
+## Architecture & Implementation Plan 
+
+## Service Mapping: 
+
+<img width="468" height="519" alt="image" src="https://github.com/user-attachments/assets/6ac95fcd-8761-4254-86af-e82f3e987e7d" />
 
 
 
