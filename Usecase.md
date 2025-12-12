@@ -46,7 +46,7 @@ The end-to-end flow of this data is securely moved, processed, and utilized for 
 * **Step 6**:
         Presentation: Frontend applications (Patient App/Staff Dashboard) query the OCI Database via the Access Layer to display real-time predictions and metrics.
 
-## Security, identity, and governance basics
+## Security, Identity, and Governance basics
 
 Managing credentials in this multi-cloud environment requires reliable, centralized methods. We will implement cloud-based authentication without storing sensitive credentials: GCP Service Accounts (for Cloud Storage), Azure Managed Identities (for Azure Functions and Azure ML), and OCI IAM Dynamic Groups (for Autonomous Database access). These services assign only the minimum permissions needed, so there’s no need to store API keys or passwords in environment variables.
 Strict Role-Based Access Control (RBAC) is applied to control data access. The Azure Function will only have read permission on the GCP Storage bucket and write permission on specific tables in the OCI Autonomous Database. The Azure ML service will only have read access to the input data tables and write access to the prediction results table within OCI. From a high level, real Protected Health Information (PHI) is prevented from entering the public cloud environment by enforcing a mandatory de-identification step within the Azure Functions ETL code. Patient IDs are immediately hashed and salted; only these non-reversible identifiers are ever stored in the OCI Database.
