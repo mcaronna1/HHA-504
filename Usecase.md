@@ -1,5 +1,9 @@
 # HHA-504 Final Project: Cloud Integration Mini-Capstone
 
+## TITLE: Optimizing Patient Experience Through Wait Time Prediction 
+
+## Case Description 
+
 Outpatient healthcare facilities are always scrutinized by patient experience, where wait time stands out as a critical especially for patients with a scheduled doctor's appointment. Long wait times are often frustrating and diminish patient satisfaction, lead to missed appointments, and contribute to operational inefficiencies within the clinic. In today’s healthcare environment, optimizing resources and prioritizing patient engagement are important, and relying on historical data and informal insights is no longer enough. This paper proposes to attempt to build a comprehensive cloud-based solution architecture designed to address this challenge by providing a prediction of patient wait times from check-in to provider start time. The primary goal is to provide patients with accurate, real-time estimates of their expected wait times so they can better plan their day, while also equipping clinic leadership with actionable insights to support continuous improvement and a more effective resource for scheduling. 
 
   
