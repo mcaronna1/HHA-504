@@ -11,4 +11,16 @@ The core problem is the unpredictable and often excessive delay experienced by p
 
 Users who will be the patients who will receive real-time estimated wait times, all in a mobile app. Clinic staff, such as the front desk, as well as the clinical team. They will have input check-in times and monitor clinic flow by using a dashboard to proactively manage delays. Clinic Management that relies on aggregated daily/weekly data to streamline optimized provider schedules and staffing levels.The system relies on three distinct types of data, securely sourced from the outpatient to facility system, primarily from the Electronic Health Record (EHR).  Data source summary organized by the clinic’s EHR system. The most critical data for a wait time prediction is real-time data, which will help capture patient timestamps, such as when the patient checked in and when the provider saw the patient, all by using API events to calculate status and historical wait times. This would be supplemented by scheduled batch data that provides appointment context, such as appointment types or expected duration. Then, reference data, such as using a provider schedule, background data, will help support planning. The data will be stripped of its identifiers as soon as it is uploaded to the cloud, making sure it is in compliance while supporting real-time predictions.
 
+## Architecture Diagram
+
+A basic workflow through the system streamlining real time all by real-time events, such as first the patient being checked in, and what follows.  Once the patient is checked in, the EHR system records the check-in timestamp. Data ingestion or an integration layer will securely send the new update patient flow data (JSON/event message) to the cloud environment. The raw data will be stored in a secure cloud storage bucket. Now it has moved into a processing and transformation stage, and the arrival of new data triggers a serverless data pipeline, which calculates the necessary time, such as wait times.  Database load structured and cleaned data is loaded into the managed SQL database for persistent storage as the source for the prediction model. Prediction- containerized computer service that hosts a machine learning model, which retrieves the current waiting list and data from the SQL database, and calculates the predicted wait time for each active patient. The API gateway exposes a secure endpoint.
+The architecture diagram that has been created uses a serverless-first approach for scalability and cost efficiency, with a managed relational database for structured data.
+ 
+To begin, each cloud service in this system will be described in terms of its specific role, highlighting how it relates to concepts covered in prior coursework. The accompanying visual diagram provides a clear mapping of these services and their interactions. Below is a service mapping of the plan, which gives a clear visualization of the layer, which service cloud could be used, the solution, and which module we learned in class.
+
+
+
+
+
+
 
