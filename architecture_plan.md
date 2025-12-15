@@ -56,6 +56,9 @@ To protect patient data, all identifying information is removed early in the pro
 
 The biggest steady expense, or fixed cost, will be the Cloud SQL Database. We need it running 24/7 with high performance for the system to work. The cost that changes the most, or variable cost, comes from Cloud Run (our AI prediction service) because it scales up heavily during busy clinic hours.To save money, we rely on serverless tools instead of traditional, always-on servers (VMs). Cloud Functions only charge us when a patient file actually arrives. The best cost saver is configuring Cloud Run to scale down to zero when the clinic is closed, so we stop paying for compute power when it's not needed. To fit a small budget, we would use the smallest possible Cloud SQL size and aggressively use the free tiers provided by Cloud Storage and Cloud Functions.
 
+**info**
+If the clinic is already an Azure enterprise user (using Microsoft 365,), Azure could be the better business decision. The savings and simplicity gained from using its strong existing identity management.
+
 
 
 
