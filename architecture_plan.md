@@ -3,7 +3,8 @@
 
 High-Level Architecture Diagram
 
-[Architecture Diagram]
+[Architecture Diagram](images/architecture_diagram.png)
+
 
 
 
