@@ -18,4 +18,3 @@ The final design demonstrates that real-time wait time prediction can be achieve
 
 
 
-
