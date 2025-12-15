@@ -27,6 +27,15 @@ o	The Patient App and Staff Dashboard retrieve the final, real-time, from the da
 
 ## 3. Security, Identity, and Governance basics
 
+This serverless GCP system uses IAM and Service Accounts to manage credentials, so no passwords or API keys are stored in code or environment variables. Each service, such as Cloud Functions and Cloud Run, has its own Service Account for secure authentication. Any external secrets (like third-party API keys) are stored in Secret Manager and only accessible to the services that need them.
+
+Access is tightly controlled using least-privilege roles. Cloud Functions can read input files and write to Cloud SQL, while Cloud Run can read and write only the data required for predictions. Broad roles like Owner or Editor are not used.
+
+To protect patient data, all identifying information is removed early in the process. Sensitive fields (such as names and birthdates) are immediately hashed into non-reversible IDs. Only anonymized data is stored and processed, ensuring privacy and compliance throughout the system.
+
+## 4. Cost and Operational Considerations
+
+The biggest steady expense, or fixed cost, will be the Cloud SQL Database. We need it running 24/7 with high performance for the system to work. The cost that changes the most, or variable cost, comes from Cloud Run (our AI prediction service) because it scales up heavily during busy clinic hours.To save money, we rely on serverless tools instead of traditional, always-on servers (VMs). Cloud Functions only charge us when a patient file actually arrives. The best cost saver is configuring Cloud Run to scale down to zero when the clinic is closed, so we stop paying for compute power when it's not needed. To fit a small budget, we would use the smallest possible Cloud SQL size and aggressively use the free tiers provided by Cloud Storage and Cloud Functions.
 
 
 
