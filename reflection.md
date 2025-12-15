@@ -1,8 +1,13 @@
 ## Reflection 
 
 I feel most confident about the security and efficiency of our data pipeline. By keeping everything on GCP and using Cloud Functions for ETL, the data moves quickly and cheaply. Crucially, placing the de-identification step right inside the function makes sure patient data is secure before it ever hits the main database. 
-The biggest concern is the accuracy of the prediction model over time. Its hard to predict real clinic events (like doctor delays or patient no-shows). While Cloud Run works well for running the model, keeping the accuracy high will require contsantly monitoring the model for drift and setting up a complex, ongoing MLOps stsrem to retraining.
+The biggest concern is the accuracy of the prediction model over time. Its hard to predict real clinic events (like doctor delays or patient no-shows). While Cloud Run works well for running the model, keeping the accuracy high will require contsantly monitoring the model and setting up a ongoing MLOps system to retraining.
 
 We considered building the system using Cloud Dataflow for ETL and prediction, but ultimately decided against it. Dataflow is designed for large-scale, complex batch processing, which would be unnecessary for our relatively small, event-driven workload. Instead, we chose Cloud Functions and Cloud Run because they are more cost-effective, scale to zero when idle, and are better suited for the low-latency, real-time updates required by the clinic.
 
-If I had more time and resources, I would focus on making the system more automated and more valuable to patients. This would include using Vertex AI Pipelines to automatically retrain the prediction model on a daily basis and deploy updates to Cloud Run using A/B testing with no downtime. I would also add a proactive notification service that sends SMS or push alerts to patients when their predicted wait time changes significantly. To further improve responsiveness, I would switch data ingestion from file uploads to Pub/Sub messaging to enable true real-time processing and reduce latency to milliseconds, and GCP costs in one centralized view.
+ⓘ **Info**
+
+After reviewing different clouds, If the clinic is already an Azure enterprise user (such as using Microsoft 365,), Azure could be the better business decision. The savings and simplicity gained from using it can be another option.
+
+
+If I had more time and resources, I would focus on making the system more automated and more valuable to patients. This would include using Vertex AI Pipelines to automatically retrain the prediction model on a daily basis and deploy updates to Cloud Run using A/B testing with no downtime. I would also add a proactive notification service that sends text or push alerts to patients when their predicted wait time changes significantly. To further improve responsiveness, I would change the system so data is sent instantly instead of being uploaded as files, which would make updates happen much faster and make cloud costs easier to see in one place.
