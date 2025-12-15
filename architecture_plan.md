@@ -18,7 +18,7 @@ To begin, each cloud service in this system will be described in terms of its sp
 |------------------|------------------------------|----------------------------------------------------------------------------------|-----------------------------|
 | Storage          | Google Cloud Storage         | Stores raw JSON/CSV check-in and patient status data securely uploaded from the EHR system prior to processing. | Module 6 |
 | Compute          | Cloud Functions              | Triggered by new files in Cloud Storage to perform ETL tasks, including data cleaning, transformation, de-identification, and time interval calculations. | Module 5 |
-| Compute          | Cloud Run                    | Runs the containerized prediction service that calculates real-time patient wait times and exposes REST APIs for downstream access. | Module 3 |
+| Compute          | Cloud Run                    | Runs the containerized prediction service that calculates real-time patient wait times and exposes Endpoints that let other applications retrieve the information. | Module 3 |
 | Database / SQL   | Cloud SQL (PostgreSQL)       | Stores cleaned patient flow data, historical records, and predicted wait times for operational queries. | Module 8 |
 | Analytics / AI   | BigQuery                     | Performs aggregated analytics and reporting on historical wait time and clinic flow data. | Module 9 |
 
