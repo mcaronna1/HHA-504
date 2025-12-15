@@ -12,7 +12,18 @@
 To begin, each cloud service in this system will be described in terms of its specific role, highlighting how it relates to concepts covered in prior coursework. The accompanying visual diagram provides a clear mapping of these services and their interactions. Below is a service mapping of the plan, which gives a clear visualization of the layer, which service cloud could be used, the solution, and which module we learned in class.
 
 ## 1. Service Mapping: 
-<img width="468" height="307" alt="image" src="https://github.com/user-attachments/assets/03550331-c72a-4d26-ab51-5a55b085d325" />
+
+
+| Layer            | Service (Cloud)              | Role in Solution                                                                 | Related Assignment / Module |
+|------------------|------------------------------|----------------------------------------------------------------------------------|-----------------------------|
+| Storage          | Google Cloud Storage         | Stores raw JSON/CSV check-in and patient status data securely uploaded from the EHR system prior to processing. | Module 6 |
+| Compute          | Cloud Functions              | Triggered by new files in Cloud Storage to perform ETL tasks, including data cleaning, transformation, de-identification, and time interval calculations. | Module 5 |
+| Compute          | Cloud Run                    | Runs the containerized prediction service that calculates real-time patient wait times and exposes REST APIs for downstream access. | Module 3 |
+| Database / SQL   | Cloud SQL (PostgreSQL)       | Stores cleaned patient flow data, historical records, and predicted wait times for operational queries. | Module 8 |
+| Analytics / AI   | BigQuery                     | Performs aggregated analytics and reporting on historical wait time and clinic flow data. | Module 9 |
+
+
+
 
 ## 2. Data Flow Narrative
 
