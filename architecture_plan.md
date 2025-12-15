@@ -18,7 +18,7 @@ To begin, each cloud service in this system will be described in terms of its sp
 |------------------|------------------------------|----------------------------------------------------------------------------------|-----------------------------|
 | Storage          | Google Cloud Storage         | Stores raw JSON/CSV check-in and patient status data securely uploaded from the EHR system prior to processing. | Module 6 |
 | Compute          | Cloud Functions              | Triggered by new files in Cloud Storage to perform ETL tasks, including data cleaning, transformation, de-identification, and time interval calculations. | Module 5 |
-| Compute          | Cloud Run                    | Runs the containerized prediction service that calculates real-time patient wait times and exposes Endpoints that let other applications retrieve the information. | Module 3 |
+| Compute          | Cloud Run                    | Runs the containerized prediction service that calculates real-time patient wait times and exposes endpoints that let other applications retrieve the information. | Module 3 |
 | Database / SQL   | Cloud SQL (PostgreSQL)       | Stores cleaned patient flow data, historical records, and predicted wait times for operational queries. | Module 8 |
 | Analytics / AI   | BigQuery                     | Performs aggregated analytics and reporting on historical wait time and clinic flow data. | Module 9 |
 
@@ -50,8 +50,7 @@ This serverless GCP system uses IAM and Service Accounts to manage credentials, 
 
 Access is tightly controlled using least-privilege roles. Cloud Functions can read input files and write to Cloud SQL, while Cloud Run can read and write only the data required for predictions. Broad roles like Owner or Editor are not used.
 
-To protect patient data, all identifying information is removed early in the process. Sensitive fields (such as names and birthdates) are immediately hashed into non-reversible IDs. Only anonymized data is stored and processed, ensuring privacy and compliance throughout the system.
-
+To protect patient data, all identifying information is removed early in the process. Sensitive fields (such as names and birthdates) are immediately hashed into non-reversible IDs. Only data with all personal identifiers removed is stored and used, keeping patient information private and the system compliant with regulations.
 ## 4. Cost and Operational Considerations
 
 The biggest steady expense, or fixed cost, will be the Cloud SQL Database. We need it running 24/7 with high performance for the system to work. The cost that changes the most, or variable cost, comes from Cloud Run (our AI prediction service) because it scales up heavily during busy clinic hours.To save money, we rely on serverless tools instead of traditional, always-on servers (VMs). Cloud Functions only charge us when a patient file actually arrives. The best cost saver is configuring Cloud Run to scale down to zero when the clinic is closed, so we stop paying for compute power when it's not needed. To fit a small budget, we would use the smallest possible Cloud SQL size and aggressively use the free tiers provided by Cloud Storage and Cloud Functions.
