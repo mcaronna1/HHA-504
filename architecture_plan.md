@@ -1,7 +1,7 @@
 
 ## Architecture & Implementation Plan 
 
-High-Level Architecture Diagram
+## High-Level Architecture Diagram
 
 [Architecture Diagram](images/architecture_diagram.png)
 
