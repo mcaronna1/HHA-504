@@ -1,4 +1,10 @@
+
 ## Architecture & Implementation Plan 
+
+High-Level Architecture Diagram
+
+[Architecture Diagram]
+
 
 
 To begin, each cloud service in this system will be described in terms of its specific role, highlighting how it relates to concepts covered in prior coursework. The accompanying visual diagram provides a clear mapping of these services and their interactions. Below is a service mapping of the plan, which gives a clear visualization of the layer, which service cloud could be used, the solution, and which module we learned in class.
