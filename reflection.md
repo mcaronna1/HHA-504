@@ -1,3 +1,5 @@
+## Reflection 
+
 I feel most confident about the security and efficiency of our data pipeline. By keeping everything on GCP and using Cloud Functions for ETL, the data moves quickly and cheaply. Crucially, placing the de-identification step right inside the function makes sure patient data is secure before it ever hits the main database. 
 The biggest concern is the accuracy of the prediction model over time. Its hard to predict real clinic events (like doctor delays or patient no-shows). While Cloud Run works well for running the model, keeping the accuracy high will require contsantly monitoring the model for drift and setting up a complex, ongoing MLOps stsrem to retraining.
 
